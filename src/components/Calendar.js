@@ -6,6 +6,10 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { TaskContext } from "../context/TaskContext.js";
 import "./CalendarPage.css";
 
+// 환경 변수에서 CLIENT_ID와 API_KEY 불러오기
+const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+
 export default function CalendarPage() {
   const { tasks, toggleTask, addTask } = useContext(TaskContext);
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -13,22 +17,31 @@ export default function CalendarPage() {
   const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
-    function checkSignInStatus() {
-      const authInstance = gapi.auth2.getAuthInstance();
-      if (authInstance) {
-        setIsSignedIn(authInstance.isSignedIn.get());
-      }
+    function initGoogleAuth() {
+      gapi.load("client:auth2", () => {
+        gapi.auth2
+          .init({
+            apiKey: API_KEY,
+            client_id: CLIENT_ID,
+            scope: "https://www.googleapis.com/auth/calendar.events",
+          })
+          .then(() => {
+            const authInstance = gapi.auth2.getAuthInstance();
+            setIsSignedIn(authInstance.isSignedIn.get());
+          })
+          .catch((error) => console.error("Google Auth 초기화 실패:", error));
+      });
     }
 
-    gapi.load("client:auth2", checkSignInStatus);
+    initGoogleAuth();
   }, []);
 
   useEffect(() => {
     setEvents(
       tasks.map((task) => ({
-        id: task.id,
+        id: task.id.toString(),
         title: task.completed ? `✅ ${task.text}` : `⬜ ${task.text}`,
-        start: task.date,
+        start: new Date(task.date),
         allDay: true,
         backgroundColor: task.completed ? "#666" : "#555",
         borderColor: "#555",

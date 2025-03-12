@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { TaskProvider } from "./context/TaskContext";
 import Calendar from "./components/Calendar";
 import TaskList from "./components/TaskList";
@@ -8,68 +8,116 @@ import Settings from "./components/Settings";
 import Profile from "./components/Profile";
 
 export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const containerStyle = {
+    minHeight: "100vh",
+    backgroundColor: "black",
+    color: "white",
+    position: "relative",
+    overflowX: "hidden",
+  };
+
+  const headerStyle = {
+    backgroundColor: "black",
+    color: "white",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "10px 20px",
+    borderBottom: "1px solid gray",
+    position: "relative",
+  };
+
+  const menuButtonStyle = {
+    fontSize: "24px",
+    fontWeight: "bold",
+    cursor: "pointer",
+  };
+
+  const titleStyle = {
+    fontSize: "32px",
+    fontWeight: "bold",
+    textAlign: "center",
+    flexGrow: 1,
+  };
+
+  const settingsLinkStyle = {
+    color: "white",
+    textDecoration: "none",
+    fontSize: "18px",
+    fontWeight: "bold",
+  };
+
+  const sideMenuStyle = {
+    position: "fixed",
+    top: "0",
+    left: "0",
+    height: "100%",
+    width: "250px",
+    backgroundColor: "#333",
+    color: "white",
+    boxShadow: "2px 0 5px rgba(0, 0, 0, 0.5)",
+    transform: menuOpen ? "translateX(0)" : "translateX(-100%)",
+    transition: "transform 0.3s ease-in-out",
+    padding: "20px",
+  };
+
+  const linkStyle = {
+    fontSize: "18px",
+    fontWeight: "bold",
+    margin: "15px 0",
+    textDecoration: "none",
+    color: "white",
+    display: "block",
+  };
+
+  const mainContentStyle = {
+    marginLeft: menuOpen ? "250px" : "0",
+    transition: "margin-left 0.3s ease-in-out",
+    padding: "20px",
+  };
+
   return (
     <TaskProvider>
       <Router>
-        <div className="min-h-screen flex flex-col bg-black text-white">
-          {/* Navigation Bar */}
-          <nav className="bg-gray-900 p-4 border-b border-gray-700">
-            <div className="w-full max-w-4xl mx-auto flex justify-center gap-6">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `text-lg font-semibold px-4 py-2 rounded-lg transition-colors ${
-                    isActive ? "text-blue-400" : "hover:text-gray-400"
-                  }`
-                }
-              >
-                Dashboard
-              </NavLink>
-              <NavLink
-                to="/calendar"
-                className={({ isActive }) =>
-                  `text-lg font-semibold px-4 py-2 rounded-lg transition-colors ${
-                    isActive ? "text-blue-400" : "hover:text-gray-400"
-                  }`
-                }
-              >
-                Calendar
-              </NavLink>
-              <NavLink
-                to="/tasks"
-                className={({ isActive }) =>
-                  `text-lg font-semibold px-4 py-2 rounded-lg transition-colors ${
-                    isActive ? "text-blue-400" : "hover:text-gray-400"
-                  }`
-                }
-              >
-                Tasks
-              </NavLink>
-              <NavLink
-                to="/settings"
-                className={({ isActive }) =>
-                  `text-lg font-semibold px-4 py-2 rounded-lg transition-colors ${
-                    isActive ? "text-blue-400" : "hover:text-gray-400"
-                  }`
-                }
-              >
-                Settings
-              </NavLink>
-              <NavLink
-                to="/profile"
-                className={({ isActive }) =>
-                  `text-lg font-semibold px-4 py-2 rounded-lg transition-colors ${
-                    isActive ? "text-blue-400" : "hover:text-gray-400"
-                  }`
-                }
-              >
-                Profile
-              </NavLink>
-            </div>
-          </nav>
+        <div style={containerStyle}>
+          {/* Top Bar */}
+          <header style={headerStyle}>
+            <button onClick={toggleMenu} style={menuButtonStyle}>
+              ☰
+            </button>
+            <div style={titleStyle}>Donezo</div>
+            <a href="/settings" style={settingsLinkStyle}>
+              Settings
+            </a>
+          </header>
+
+          {/* Side Menu */}
+          <aside style={sideMenuStyle}>
+            <a href="/" style={linkStyle}>
+              Dashboard
+            </a>
+            <a href="/calendar" style={linkStyle}>
+              Calendar
+            </a>
+            <a href="/tasks" style={linkStyle}>
+              Tasks
+            </a>
+            <a href="/settings" style={linkStyle}>
+              Settings
+            </a>
+            <a href="/profile" style={linkStyle}>
+              Profile
+            </a>
+          </aside>
 
           {/* Main Content */}
-          <div className="w-full max-w-4xl mx-auto p-6">
+          <main style={mainContentStyle}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/calendar" element={<Calendar />} />
@@ -77,7 +125,7 @@ export default function App() {
               <Route path="/settings" element={<Settings />} />
               <Route path="/profile" element={<Profile />} />
             </Routes>
-          </div>
+          </main>
         </div>
       </Router>
     </TaskProvider>
