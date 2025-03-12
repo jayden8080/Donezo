@@ -1,0 +1,95 @@
+/* ✅ 전체 컨테이너 */
+.calendar-container {
+  display: flex;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  overflow: hidden;
+}
+
+/* ✅ 캘린더 영역 */
+.calendar-content {
+  flex: 3;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ✅ FullCalendar 높이 설정 */
+.fc {
+  flex: 1;
+  min-height: 0;
+}
+
+.fc-view-container {
+  height: 100% !important;
+}
+
+.fc-scroller {
+  height: 100% !important;
+  overflow-y: auto !important;
+}
+
+/* ✅ 할 일(Task) 리스트 */
+.task-list {
+  flex: 1;
+  min-width: 280px; /* 📌 최소 너비 설정 */
+  max-width: 350px; /* 📌 최대 너비 설정 */
+  background-color: #222;
+  padding: 15px;
+  border-left: 1px solid #444;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* ✅ 왼쪽 정렬 */
+}
+
+/* ✅ 할 일(Task) 제목 */
+.task-list h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+/* ✅ 할 일(Task) 아이템 */
+.task-item {
+  display: flex;
+  align-items: center; /* ✅ 왼쪽 정렬 */
+  background: #555;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 5px;
+  width: 100%; /* ✅ 150% → 100%로 수정 */
+  justify-content: flex-start;
+}
+
+/* ✅ 체크박스 */
+.task-checkbox {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  pointer-events: auto; /* ✅ 클릭 가능하도록 */
+}
+
+/* ✅ 추가 버튼 */
+.add-task-button {
+  background-color: #1e90ff;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+
+.add-task-button:hover {
+  background-color: #0073e6;
+}

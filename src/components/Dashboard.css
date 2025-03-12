@@ -1,0 +1,63 @@
+/* Dashboard.css */
+.dashboard-container {
+    background: linear-gradient(to right, #1f2937, #374151); /* 어두운 그라디언트 배경 */
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 600px;
+    margin: 2rem auto;
+  }
+  
+  .dashboard-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  
+  .dashboard-summary {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .dashboard-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    width: 45%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dashboard-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dashboard-card p {
+    color: #d1d5db;
+    font-size: 0.9rem;
+  }
+  
+  .quick-add-btn {
+    background: #3b82f6;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .quick-add-btn:hover {
+    background: #2563eb;
+  }
+  
+  .quick-add-btn:active {
+    background: #1d4ed8;
+  }
+  
