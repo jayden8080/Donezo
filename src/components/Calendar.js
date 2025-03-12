@@ -6,7 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { TaskContext } from "../context/TaskContext.js";
 import "./CalendarPage.css";
 
-// 환경 변수에서 CLIENT_ID와 API_KEY 불러오기
+// .env에서 CLIENT_ID와 API_KEY 불러오기
 const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
