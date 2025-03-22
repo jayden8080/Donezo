@@ -16,7 +16,7 @@ export default function App() {
 
   const containerStyle = {
     minHeight: "100vh",
-    backgroundColor: "black",
+    backgroundColor: "gray",
     color: "white",
     position: "relative",
     overflowX: "hidden",

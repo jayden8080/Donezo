@@ -1,6 +1,6 @@
 /* Dashboard.css */
 .dashboard-container {
-    background: linear-gradient(to right, #1f2937, #374151); /* 어두운 그라디언트 배경 */
+    background: linear-gradient(to right, #b9afaf, #3e4c63); /* 어두운 그라디언트 배경 */
     color: white;
     padding: 2rem;
     border-radius: 12px;
@@ -24,11 +24,11 @@
   }
   
   .dashboard-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     padding: 1rem;
     border-radius: 8px;
     width: 45%;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.2);
   }
   
   .dashboard-card h3 {
