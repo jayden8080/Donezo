@@ -1,6 +1,5 @@
-/* Dashboard.css */
 .dashboard-container {
-    background: linear-gradient(to right, #b9afaf, #3e4c63); /* 어두운 그라디언트 배경 */
+    background: linear-gradient(to right, #b9afaf, #3e4c63);
     color: white;
     padding: 2rem;
     border-radius: 12px;

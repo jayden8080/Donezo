@@ -86,7 +86,6 @@ export default function App() {
     <TaskProvider>
       <Router>
         <div style={containerStyle}>
-          {/* Top Bar */}
           <header style={headerStyle}>
             <button onClick={toggleMenu} style={menuButtonStyle}>
               ☰
@@ -97,7 +96,6 @@ export default function App() {
             </a>
           </header>
 
-          {/* Side Menu */}
           <aside style={sideMenuStyle}>
             <a href="/" style={linkStyle}>
               Dashboard
@@ -116,7 +114,6 @@ export default function App() {
             </a>
           </aside>
 
-          {/* Main Content */}
           <main style={mainContentStyle}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
