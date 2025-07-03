@@ -65,7 +65,7 @@ export default function Profile() {
       } else {
         console.error("프로필 정보를 가져올 수 없음");
       }
-    }, 500); // 🔹 0.5초 대기 후 가져오기
+    }, 500);
   };
 
   const handleLogin = () => {
